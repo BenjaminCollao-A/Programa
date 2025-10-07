@@ -1,15 +1,20 @@
-hotel-reservas/
-├── App.js
-├── src/
-│   ├── screens/
-│   │   └── HomeScreen.js
-│   ├── components/
-│   │   ├── Header.js
-│   │   ├── RoomCard.js
-│   │   └── SearchBar.js
-│   ├── data/
-│   │   └── rooms.js
-│   └── styles/
-│       └── colors.js
-├── package.json
-└── README.md
+/HotelParaisoApp
+├── App.js                        ← Navegación principal (Drawer + Stack)
+├── /screens
+│   ├── HomeScreen.js             ← Pantalla principal (ya existente)
+│   ├── SearchScreen.js           ← Busqueda de disponibilidad
+│   ├── RoomsCatalogScreen.js     ← Catalogo de habitaciones
+│   ├── BookingSummaryScreen.js   ← Resumen de reserva
+│   ├── PaymentScreen.js          ← Pago (simulado)
+│   ├── ConfirmationScreen.js     ← Confirmacion + QR
+│   ├── DashboardScreen.js        ← Admin
+│   └── UsersScreen.js            ← Admin
+├── /components
+│   ├── RoomCard.js
+│   └── MetricCard.js
+├── /assets
+│   ├── logo.png
+│   └── rooms/ (imagenes de ejemplo)
+│       ├── suite.jpg
+│       ├── doble.jpg
+│       └── individual.jpg
