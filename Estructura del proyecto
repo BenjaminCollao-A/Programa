@@ -1,0 +1,15 @@
+hotel-reservas/
+├── App.js
+├── src/
+│   ├── screens/
+│   │   └── HomeScreen.js
+│   ├── components/
+│   │   ├── Header.js
+│   │   ├── RoomCard.js
+│   │   └── SearchBar.js
+│   ├── data/
+│   │   └── rooms.js
+│   └── styles/
+│       └── colors.js
+├── package.json
+└── README.md
