@@ -1,5 +1,5 @@
 /HotelParaisoApp
-├── App.js                        ← Navegación principal (Drawer + Stack)
+├── App.js                        ← Navegacion principal (Drawer + Stack)
 ├── /screens
 │   ├── HomeScreen.js             ← Pantalla principal (ya existente)
 │   ├── SearchScreen.js           ← Busqueda de disponibilidad
