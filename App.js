@@ -3,11 +3,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 
-// Importar todas las pantallas
-import AdminStack from './screens/admin/AdminStack';
+// Importar pantallas de autenticación
+import LoginScreen from './screens/auth/LoginScreen';
+import LoadingScreen from './screens/auth/LoadingScreen';
 
-<Drawer.Screen name="Panel Administrativo" component={AdminStack} />
-
+// Importar pantallas de tu app
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import RoomsCatalogScreen from './screens/RoomsCatalogScreen';
@@ -20,7 +20,8 @@ import UsersScreen from './screens/UsersScreen';
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-// 🧭 Stack del Cliente (flujo de reserva)
+
+// Stack del Cliente (flujo de reserva)
 function ClienteStack() {
   return (
     <Stack.Navigator
@@ -40,24 +41,63 @@ function ClienteStack() {
   );
 }
 
-// 🧭 Navegación principal (Drawer)
+
+// Drawer del Administrador (panel de control)
+function AdminDrawer() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Dashboard"
+      screenOptions={{
+        drawerActiveTintColor: '#003366',
+        headerStyle: { backgroundColor: '#003366' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}
+    >
+      <Drawer.Screen name="Dashboard" component={DashboardScreen} />
+      <Drawer.Screen name="Usuarios" component={UsersScreen} />
+    </Drawer.Navigator>
+  );
+}
+
+
+// Drawer principal (Cliente)
+function ClientDrawer() {
+  return (
+    <Drawer.Navigator
+      initialRouteName="Inicio"
+      screenOptions={{
+        drawerActiveTintColor: '#003366',
+        headerStyle: { backgroundColor: '#003366' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold' },
+      }}
+    >
+      <Drawer.Screen name="Inicio" component={HomeScreen} />
+      <Drawer.Screen name="Reservar" component={ClienteStack} />
+    </Drawer.Navigator>
+  );
+}
+
+
+// Flujo principal de navegación (Login → Panel)
 export default function App() {
   return (
     <NavigationContainer>
-      <Drawer.Navigator
-        initialRouteName="Inicio"
-        screenOptions={{
-          drawerActiveTintColor: '#003366',
-          headerStyle: { backgroundColor: '#003366' },
-          headerTintColor: '#fff',
-          headerTitleStyle: { fontWeight: 'bold' },
-        }}
-      >
-        <Drawer.Screen name="Inicio" component={HomeScreen} />
-        <Drawer.Screen name="Reservar" component={ClienteStack} />
-        <Drawer.Screen name="Dashboard" component={DashboardScreen} />
-        <Drawer.Screen name="Usuarios" component={UsersScreen} />
-      </Drawer.Navigator>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        {/* 🔹 Pantalla de carga */}
+        <Stack.Screen name="Loading" component={LoadingScreen} />
+
+        {/* 🔹 Login */}
+        <Stack.Screen name="Login" component={LoginScreen} />
+
+        {/* 🔹 Flujo cliente */}
+        <Stack.Screen name="ClientDrawer" component={ClientDrawer} />
+
+        {/* 🔹 Flujo administrador */}
+        <Stack.Screen name="AdminDrawer" component={AdminDrawer} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
