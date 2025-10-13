@@ -4,6 +4,10 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 
 // Importar todas las pantallas
+import AdminStack from './screens/admin/AdminStack';
+
+<Drawer.Screen name="Panel Administrativo" component={AdminStack} />
+
 import HomeScreen from './screens/HomeScreen';
 import SearchScreen from './screens/SearchScreen';
 import RoomsCatalogScreen from './screens/RoomsCatalogScreen';
